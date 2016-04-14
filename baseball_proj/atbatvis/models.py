@@ -128,4 +128,4 @@ class Play(models.Model):
         )
 
     class Meta:
-        ordering = ['game', 'inning']
+        ordering = ['game', 'inning', "bottom"]
