@@ -113,7 +113,7 @@ class Play(models.Model):
         on_delete=models.CASCADE,
         related_name='game'
     )
-    count = models.CharField(max_length=2, blank=True)
+    count = models.CharField(max_length=5, blank=True)
     pitches = models.CharField(max_length=50, blank=True)
     play_full = models.CharField(max_length=100)
     play_short = models.CharField(max_length=5)
