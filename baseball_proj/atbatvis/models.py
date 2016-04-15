@@ -106,12 +106,12 @@ class Play(models.Model):
     player = models.ForeignKey(
         'Player',
         on_delete=models.CASCADE,
-        related_name='player'
+        related_name='play'
     )
     game = models.ForeignKey(
         'Game',
         on_delete=models.CASCADE,
-        related_name='game'
+        related_name='play'
     )
     count = models.CharField(max_length=5, blank=True)
     pitches = models.CharField(max_length=50, blank=True)
