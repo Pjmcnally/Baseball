@@ -8,9 +8,11 @@ def index(request):
 
 def test(request):
     player = Player.objects.get(id='mauej001')
-    # print(player)
-    # plays = player.play.all()
-    # for play in plays:
-    #     print(play)
-    context = {"player": player}
+
+    games = {}
+    plays = player.play.all()
+    for play in plays:
+        games.get(play.game, []).append(play)
+    print(games)
+    context = {"player": player, "games": games}
     return render(request, "atbatvis/test.html", context)
