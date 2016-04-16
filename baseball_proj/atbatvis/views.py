@@ -8,8 +8,9 @@ def index(request):
 
 def test(request):
     player = Player.objects.get(id='mauej001')
-    print(player)
-    plays = player.play.all()
-    for play in plays:
-        print(play)
-    return HttpResponse("This is a test")
+    # print(player)
+    # plays = player.play.all()
+    # for play in plays:
+    #     print(play)
+    context = {"player": player}
+    return render(request, "atbatvis/test.html", context)
