@@ -50,7 +50,7 @@ class Game(models.Model):
         blank=True,
         null=True
     )
-    players = models.ManyToManyField("player")
+    players = models.ManyToManyField("player", blank=True)
 
     def __str__(self):
         return "{a} @ {h} on {d}".format(
