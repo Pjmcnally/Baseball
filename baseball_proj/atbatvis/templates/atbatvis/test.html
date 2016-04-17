@@ -14,8 +14,12 @@
 <body>
   <h1>Player = {{player.f_name}} {{player.l_name}}</h1>
 
-    {% for play in plays %}
-        <p>{{play.game}}</p>
+    {% for game in games %}
+        <div>{{forloop.counter}}: {{game}}</div>
+        {% for play in game.play.all %}
+        	<p>{{play}}</p>
+        {% endfor %}
+
     {% endfor %}
 
 
