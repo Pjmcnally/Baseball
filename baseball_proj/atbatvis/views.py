@@ -14,5 +14,5 @@ def test(request):
     # for play in plays:
     #     games.get(play.game, []).append(play)
     # print(games)
-    context = {"player": player, "games": games}
+    context = {"player": player, "games": games[:10]}
     return render(request, "atbatvis/test.html", context)
