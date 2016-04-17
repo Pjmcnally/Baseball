@@ -30,10 +30,10 @@ def gen_fixtures(game_list):
 
         if line[0] == "id":
             if game:
-                game['fields']['players'] = players
+                game['fields']['players'] = list(players)
                 game_output.append(game)
             game = {}
-            players = []
+            players = set()
             game_id = line[1]
             game['pk'] = game_id
             game['model'] = 'atbatvis.Game'
@@ -53,7 +53,7 @@ def gen_fixtures(game_list):
         # This section creates and saves play objects.
         elif line[0] == "play":
             player = line[3]
-            players.append(player)
+            players.add(player)
             pitches = line[5]
             play_full = line[6]
             count = line[4].replace("??", "")
@@ -89,7 +89,7 @@ def gen_fixtures(game_list):
                 play_output.append(play)  
             
 
-    game['fields']['players'] = players
+    game['fields']['players'] = list(players)
     game_output.append(game)
     return game_output, play_output
 
