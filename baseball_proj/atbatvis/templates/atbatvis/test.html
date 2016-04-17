@@ -14,12 +14,9 @@
 <body>
   <h1>Player = {{player.f_name}} {{player.l_name}}</h1>
 
-  {% for game in games %}
-  <div>{{game}}</div>
-    {% for play in game %}
-    <p> {{play}} </p>
+    {% for play in plays %}
+        <p>{{play.game}}</p>
     {% endfor %}
-  {% endfor %}
 
 
 </body>
