@@ -27,7 +27,7 @@ def gen_park_fix(park_list):
 
         output.append(park)
 
-    with open('parks.json', 'w') as f:
+    with open('park_fix/parks.json', 'w') as f:
         json.dump(output, f, indent=2)
 
 
@@ -39,7 +39,7 @@ def build_date(date):
   
 
 def main():
-    with open('parkcode.txt', 'r') as f:
+    with open('park_raw/parkcode.txt', 'r') as f:
         lines = [line.strip() for line in f]
 
     gen_park_fix(lines)
