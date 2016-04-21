@@ -24,7 +24,7 @@ def gen_player_fix(player_list):
 
         output.append(player)
 
-    with open('players.json', 'w') as f:
+    with open('player_fix/players.json', 'w') as f:
         json.dump(output, f, indent=2)
 
 
@@ -36,7 +36,7 @@ def build_date(date):
   
 
 def main():
-    with open('playercodes.txt', 'r') as f:
+    with open('player_raw/playercodes.txt', 'r') as f:
         lines = [line.strip() for line in f]
 
     gen_player_fix(lines)
