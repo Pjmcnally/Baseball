@@ -29,7 +29,7 @@ def gen_team_fix(team_list):
 
         output.append(team)
 
-    with open('teams.json', 'w') as f:
+    with open('team_fix/teams.json', 'w') as f:
         json.dump(output, f, indent=2)
 
 def check_year(year):
@@ -40,7 +40,7 @@ def check_year(year):
   
 
 def main():
-    with open('team_codes.txt', 'r') as f:
+    with open('team_raw/team_codes.txt', 'r') as f:
         lines = [line.strip() for line in f]
 
     gen_team_fix(lines)
