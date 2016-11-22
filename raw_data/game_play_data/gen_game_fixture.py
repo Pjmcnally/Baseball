@@ -24,7 +24,6 @@ def gen_fixtures(game_list):
     play_output = []
     game = {}
     play = {}
-    old_player = ""
 
     # slice is to remove the first line which contains column info
     for i, line in enumerate(game_list):
