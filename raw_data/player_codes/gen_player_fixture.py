@@ -1,17 +1,18 @@
 import json
 
-def gen_player_fix(player_list):   
+
+def gen_player_fix(player_list):
     """ Function to build fixture for player info.
 
     This function was desiged to work on http://www.retrosheet.org/retroID.htm.
-    
-    That file is set up with 1 player per line.  
+
+    That file is set up with 1 player per line.
     Columns are LAST,FIRST,ID,DEBUT
 
-    """ 
+    """
     output = []
 
-    # slice is to remove the first line which contains column info 
+    # slice is to remove the first line which contains column info
     for line in player_list[1:]:
         line = line.split(',')
         player = {}
@@ -33,7 +34,7 @@ def build_date(date):
         return "{y}-{m}-{d}".format(y=date[6:], m=date[0:2], d=date[3:5])
     else:
         return None
-  
+
 
 def main():
     with open('player_raw/playercodes.txt', 'r') as f:

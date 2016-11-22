@@ -1,21 +1,22 @@
 import json
 
-def gen_team_fix(team_list):   
+
+def gen_team_fix(team_list):
     """ Function to build fixture for team info.
 
-    This function was desiged to work on the file found at 
+    This function was desiged to work on the file found at
     http://www.retrosheet.org/team_codes.html.
 
-    Ideally I would like to use the file from 
+    Ideally I would like to use the file from
     http://www.retrosheet.org/TeamIds.htm however, it is unavailable.
-    
-    That file is set up with 1 team per line.  
+
+    That file is set up with 1 team per line.
     Columns are TEAMID,LEAGUE,START,END,CITY,NICKNAME,FRANCHID,SEQ
 
-    """ 
+    """
     output = []
 
-    # slice is to remove the first line which contains column info 
+    # slice is to remove the first line which contains column info
     for line in team_list[1:]:
         line = line.split(',')
         team = {}
@@ -32,12 +33,13 @@ def gen_team_fix(team_list):
     with open('team_fix/teams.json', 'w') as f:
         json.dump(output, f, indent=2)
 
+
 def check_year(year):
     if year == "0":
         return "Current"
     else:
         return year
-  
+
 
 def main():
     with open('team_raw/team_codes.txt', 'r') as f:

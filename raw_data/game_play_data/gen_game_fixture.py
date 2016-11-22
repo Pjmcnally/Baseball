@@ -2,6 +2,7 @@ import json
 import re
 import os
 
+
 def get_files(path):
     files = {}
 
@@ -13,19 +14,19 @@ def get_files(path):
     return files
 
 
-def gen_fixtures(game_list):   
+def gen_fixtures(game_list):
     """ Function to build fixture for game info.
 
     This function was desiged to work on game data file from Retrosheets.
-    
-    """ 
+
+    """
     game_output = []
     play_output = []
     game = {}
     play = {}
     old_player = ""
 
-    # slice is to remove the first line which contains column info 
+    # slice is to remove the first line which contains column info
     for i, line in enumerate(game_list):
 
         if line[0] == "id":
@@ -58,15 +59,14 @@ def gen_fixtures(game_list):
             play_full = line[6]
             count = line[4].replace("??", "")
 
-            
             # These are all plays that do not end a plate apperance
             if (
                 "WP" in play_full or
                 "NP" in play_full or
                 "OA" in play_full or
                 "SB" in play_full or
-                "CS" in play_full or 
-                "PO" in play_full or 
+                "CS" in play_full or
+                "PO" in play_full or
                 "PB" in play_full
             ):
                 continue
@@ -82,16 +82,16 @@ def gen_fixtures(game_list):
                 play['fields']['pitches'] = pitches
                 play['fields']['play_full'] = play_full
                 play['fields']['play_short'] = interp(
-                    pitches, 
+                    pitches,
                     play_full
                 )
 
-                play_output.append(play)  
-            
+                play_output.append(play)
 
     game['fields']['players'] = list(players)
     game_output.append(game)
     return game_output, play_output
+
 
 def interp(pitches, play):
     pitches, play = pitches.upper(), play.upper()
@@ -109,7 +109,7 @@ def interp(pitches, play):
 
     else:
         play_short = re.findall(r'^([A-Z]+)', play)[0]
-        
+
         if play_short == "S":
             return "1B"
         elif play_short == "D":
@@ -136,11 +136,10 @@ def interp(pitches, play):
             return "IW"
         elif "W" in play:
             return "W"
-        
+
         else:
             print(play_short, play)
             return "THIS SHOULD NEVER BE SEEN (not out)"
-
 
 
 def build_date(date):
@@ -150,10 +149,11 @@ def build_date(date):
     else:
         return None
 
+
 def build_time(time):
     h_reg = r'^([\d]+):'
     m_reg = r':([\d]+)'
-    
+
     if time:
         hour = int(re.findall(h_reg, time)[0])
         if "pm" in time.lower():
@@ -165,13 +165,13 @@ def build_time(time):
         return "{h}:{m}:{s}".format(h=hour, m=minute, s="00")
     else:
         return ''
-  
+
 
 def main():
     in_path = "./game_raw"
     g_out_path = "./game_fix"
     p_out_path = "./play_fix"
-    
+
     # For testing
     # in_path = "./test"
     # g_out_path = "./test"

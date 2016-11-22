@@ -1,17 +1,18 @@
 import json
 
-def gen_park_fix(park_list):   
+
+def gen_park_fix(park_list):
     """ Function to build fixture for park info.
 
     This function was desiged to work on parkcode.txt file from Retrosheets.
-    
-    That file is set up with 1 park per line.  
+
+    That file is set up with 1 park per line.
     Columns are PARKID,NAME,AKA,CITY,STATE,START,END,LEAGUE,NOTES
 
-    """ 
+    """
     output = []
 
-    # slice is to remove the first line which contains column info 
+    # slice is to remove the first line which contains column info
     for line in park_list[1:]:
         line = line.split(',')
         park = {}
@@ -36,7 +37,7 @@ def build_date(date):
         return "{y}-{m}-{d}".format(y=date[6:], m=date[0:2], d=date[3:5])
     else:
         return None
-  
+
 
 def main():
     with open('park_raw/parkcode.txt', 'r') as f:
