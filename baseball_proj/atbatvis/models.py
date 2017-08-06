@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Player(models.Model):
     """ Model for player data """
@@ -62,6 +63,7 @@ class Game(models.Model):
     class Meta:
         ordering = ['date', 'start_time']
 
+
 class Location(models.Model):
     """ Model for location data """
 
@@ -84,20 +86,22 @@ class Location(models.Model):
     class Meta:
         ordering = ['id']
 
+
 class Team(models.Model):
-    """ Model for team data """ 
+    """ Model for team data """
 
     id = models.CharField(primary_key=True, max_length=3)
     name = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
     start = models.CharField(max_length=4)
     end = models.CharField(max_length=7)
-    
+
     def __str__(self):
         return "{}: {}".format(self.id, self.name)
 
     class Meta:
         ordering = ['id']
+
 
 class Play(models.Model):
     """ Model for play data """
